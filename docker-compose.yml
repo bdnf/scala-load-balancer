@@ -1,0 +1,12 @@
+version: "3"
+services:
+  manager:
+    container_name: forwarder
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    environment:
+      TARGET_SERVER: http://
+      PROXY_SERVER: http://
+    ports:
+      - 0000:0000
