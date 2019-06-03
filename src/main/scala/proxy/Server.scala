@@ -18,6 +18,9 @@ trait Service {
 
   val routes: HttpRequest => Future[HttpResponse] = {
 
+    case HttpRequest(method, Uri.Path("/test"), headers, entity, _) =>
+      Future.successful(HttpResponse(entity="Hello test route!"))
+
     case HttpRequest(method, Uri.Path(path), headers, entity, _) =>
 
       val request: HttpRequest = HttpRequest(method, forwardTo.withPath(Uri.Path(path)))
